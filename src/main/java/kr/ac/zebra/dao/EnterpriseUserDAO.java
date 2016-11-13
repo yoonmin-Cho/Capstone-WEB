@@ -28,6 +28,5 @@ public class EnterpriseUserDAO {
 			e.printStackTrace();
 		}
 		return null;
-	}
-	
+	}	
 }
