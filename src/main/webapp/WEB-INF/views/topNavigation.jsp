@@ -134,10 +134,10 @@
 <body>
 
 	<%
-		String rcv = (String) session.getAttribute("loginUser");
-		String user = (String) session.getAttribute("user");
-
-		if (rcv != null && user.equals("enterprise")) {
+		String user = (String)session.getAttribute("user");
+		String name = (String)session.getAttribute("name");
+		
+		if (name != null && user.equals("enterprise")) {
 	%>
 	<!-- EnterPrise User -->
 	<nav class="navbar navbar-default navbar-fixed-top" role="navigation">
@@ -167,7 +167,7 @@
 					<li>
 						<a href="#" data-toggle="modal" data-target="#">
 							<span class="glyphicon glyphicon-user"></span> 
-							<%=rcv%>
+							<%=name%>
 						</a>
 					</li>
 					<li>
@@ -181,7 +181,7 @@
 		</div>
 	</nav>
 	<%
-		} else if (rcv != null && user.equals("common")) {
+		} else if (name != null && user.equals("common")) {
 	%>
 	
 	<!-- Common User -->
@@ -211,7 +211,7 @@
 					<li>
 						<a href="#" data-toggle="modal" data-target="#"> 
 							<span class="glyphicon glyphicon-user"></span> 
-							<%=rcv%>
+							<%=name%>
 						</a>
 					</li>
 					<li>

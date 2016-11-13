@@ -9,6 +9,7 @@ import kr.ac.zebra.service.WebLoginService;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 
 @Controller
@@ -22,25 +23,37 @@ public class WebLoginController {
 	}
 	
 	@RequestMapping(value="/doLogin")
-	public String doLogin(HttpServletRequest request, HttpSession session){
+	public String doLogin(HttpServletRequest request, HttpSession session, Model model){
 		
 		String email = request.getParameter("email");
 		String password = request.getParameter("password");
 		String user = request.getParameter("user");
 		
 		if(user.equals("common")){
-			
-			
+			CommonUser commonUser = webLoginService.getCommonUser(email,password);
+			if(commonUser == null)
+				return "failLogin";
+			model.addAttribute("loginUser", commonUser);
+			session.setAttribute("name", commonUser.getName());
+			session.setAttribute("user", user);
 		}
 		else if(user.equals("enterprise")){
-			
+			EnterpriseUser enterUser = webLoginService.getEnterUser(email,password);
+			if(enterUser == null)
+				return "failLogin";
+			model.addAttribute("loginUser", enterUser);
+			session.setAttribute("name", enterUser.getName());
+			session.setAttribute("user", user);
 		}
-		else{
+		else
+			return "failLogin";
 			
-		}
-		
-		session.setAttribute("user", user);
-		
 		return "home";
+	}
+	
+	@RequestMapping(value="/logout")
+	public String doLogout(){
+		
+		return "logout";
 	}
 }

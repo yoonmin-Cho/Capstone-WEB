@@ -5,7 +5,7 @@ import lombok.Data;
 @Data
 public class EnterpriseUser {
 	
-	private String companyName;
+	private String name;
 	private String email;
 	private String password;
 	
@@ -13,14 +13,14 @@ public class EnterpriseUser {
 	
 	}
 	
-	public EnterpriseUser(String companyName, String email, String password){
-		this.companyName = companyName;
+	public EnterpriseUser(String name, String email, String password){
+		this.name = name;
 		this.email = email;
 		this.password = password;
 	}
 	
 	public String toString()
 	  {
-	    return "Enterprise [companyName=" + this.companyName + ", email=" + this.email + ", password=" + this.password + "]";
+	    return "Enterprise [name=" + this.name + ", email=" + this.email + ", password=" + this.password + "]";
 	  }
 }

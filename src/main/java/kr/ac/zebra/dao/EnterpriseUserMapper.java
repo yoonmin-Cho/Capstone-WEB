@@ -11,7 +11,7 @@ public class EnterpriseUserMapper implements RowMapper<EnterpriseUser>{
 	public EnterpriseUser mapRow(ResultSet rs, int rowNum)throws SQLException{
 		EnterpriseUser enterUser = new EnterpriseUser();
 		
-		enterUser.setCompanyName(rs.getString("companyName"));
+		enterUser.setName(rs.getString("name"));
 		enterUser.setEmail(rs.getString("email"));
 		enterUser.setPassword(rs.getString("password"));
 		
