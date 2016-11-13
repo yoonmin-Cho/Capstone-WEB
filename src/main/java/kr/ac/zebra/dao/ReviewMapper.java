@@ -3,19 +3,22 @@ package kr.ac.zebra.dao;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 
-import kr.ac.zebra.dto.AppApply;
+import kr.ac.zebra.dto.Review;
 
 import org.springframework.jdbc.core.RowMapper;
 
-public class ReviewMapper implements RowMapper<AppApply>{
-	public AppApply mapRow(ResultSet rs, int rowNum)throws SQLException{
-		AppApply applyProduct = new AppApply();
+public class ReviewMapper implements RowMapper<Review>{
+	public Review mapRow(ResultSet rs, int rowNum)throws SQLException{
+		Review review = new Review();
 		
-		applyProduct.setBarcode(rs.getString("barcode"));
-		applyProduct.setEmail(rs.getString("email"));
-		applyProduct.setProductName(rs.getString("productName"));
-		applyProduct.setCompanyName(rs.getString("companyName"));
+		review.setEmail(rs.getString("email"));
+		review.setBarcode(rs.getString("barcode"));
+		review.setReviewText(rs.getString("reviewText"));
+		review.setStarPoint(rs.getDouble("starPoint"));
+		review.setMemberUrl(rs.getString("memberUrl"));
+		review.setProductUrl(rs.getString("productUrl"));
+		review.setLevel(rs.getString("level"));
 		
-		return applyProduct;
+		return review;
 	}
 }

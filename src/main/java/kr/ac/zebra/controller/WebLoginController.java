@@ -3,6 +3,8 @@ package kr.ac.zebra.controller;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
 
+import kr.ac.zebra.dto.CommonUser;
+import kr.ac.zebra.dto.EnterpriseUser;
 import kr.ac.zebra.service.WebLoginService;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -27,6 +29,7 @@ public class WebLoginController {
 		String user = request.getParameter("user");
 		
 		if(user.equals("common")){
+			
 			
 		}
 		else if(user.equals("enterprise")){
