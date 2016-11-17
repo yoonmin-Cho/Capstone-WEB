@@ -1,4 +1,3 @@
-<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
 <%@ taglib uri="http://www.springframework.org/tags" prefix="spring"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
@@ -132,13 +131,14 @@
 </style>
 </head>
 <body>
-
 	<%
+		String logOk = (String)session.getAttribute("logOk");
 		String user = (String)session.getAttribute("user");
-		String name = (String)session.getAttribute("name");
+		String userName = (String)session.getAttribute("userName");
 		
-		if (name != null && user.equals("enterprise")) {
+		if (logOk.equals("login") && user.equals("enterprise")) {
 	%>
+	
 	<!-- EnterPrise User -->
 	<nav class="navbar navbar-default navbar-fixed-top" role="navigation">
 		<div class="container">
@@ -159,7 +159,7 @@
 					<li class="hidden"><a class="page-scroll" href="#page-top"></a></li>
 					<li><a class="page-scroll" href="/ZEBRA/aboutService">About Services</a></li>
 					<li><a class="page-scroll" href="/ZEBRA/powerReviewer">Power Reviewer</a></li>
-					<li><a class="page-scroll" href="/ZEBRA/PopularProduct?category=0">Product</a></li>
+					<li><a class="page-scroll" href="/ZEBRA/product">Product</a></li>
 					<li><a class="page-scroll" href="/ZEBRA/ourProduct?filter=All">OurProduct</a></li>
 					<li><a class="page-scroll" href="/ZEBRA/management">Management</a></li>
 				</ul>
@@ -167,7 +167,7 @@
 					<li>
 						<a href="#" data-toggle="modal" data-target="#">
 							<span class="glyphicon glyphicon-user"></span> 
-							<%=name%>
+							<%=userName%>
 						</a>
 					</li>
 					<li>
@@ -181,7 +181,7 @@
 		</div>
 	</nav>
 	<%
-		} else if (name != null && user.equals("common")) {
+		} else if (logOk.equals("login") && user.equals("common")) {
 	%>
 	
 	<!-- Common User -->
@@ -204,14 +204,14 @@
 					<li class="hidden"><a class="page-scroll" href="#page-top"></a></li>
 					<li><a class="page-scroll" href="/ZEBRA/aboutService">About Services</a></li>
 					<li><a class="page-scroll" href="/ZEBRA/powerReviewer">Power Reviewer</a></li>
-					<li><a class="page-scroll" href="/ZEBRA/popularProduct?category=0"">Product & Purchase</a></li>
+					<li><a class="page-scroll" href="/ZEBRA/product"">Product & Purchase</a></li>
 				</ul>
 
 				<ul class="nav navbar-nav navbar-right">
 					<li>
 						<a href="#" data-toggle="modal" data-target="#"> 
 							<span class="glyphicon glyphicon-user"></span> 
-							<%=name%>
+							<%=userName%>
 						</a>
 					</li>
 					<li>
@@ -249,7 +249,7 @@
 					<li class="hidden"><a class="page-scroll" href="#page-top"></a></li>
 					<li><a class="page-scroll" href="/ZEBRA/aboutService">About Services</a></li>
 					<li><a class="page-scroll" href="/ZEBRA/powerReviewer">Power Reviewer</a></li>
-					<li><a class="page-scroll" href="/ZEBRA/popularProduct?category=0">Product</a></li>
+					<li><a class="page-scroll" href="/ZEBRA/product">Product</a></li>
 				</ul>
 
 				<ul class="nav navbar-nav navbar-right">
@@ -281,8 +281,7 @@
 			<div class="loginmodal-container">
 				<h1>Registration</h1>
 				<br>
-				<c:url var="addUrl" value="doLogin" />
-				<form action="${addUrl}" method="GET">
+				<form action="doLogin" method="GET">
 					<input type="text" name="companyname" placeholder="Company Name">
 					<input type="text" name="email" placeholder="Email"> 
 					<input type="password" name="password" placeholder="Password">
@@ -300,8 +299,7 @@
 			<div class="loginmodal-container">
 				<h1>Login to Your Account</h1>
 				<br>
-				<c:url var="addUrl" value="doLogin" />
-				<form action="${addUrl}" method="GET">
+				<form action="doLogin" method="GET">
 					<input type="text" name="email" placeholder="email"> 
 					<input type="password" name="password" placeholder="Password"> 
 					<input type="radio" name="user" value="common">&nbsp;Common 

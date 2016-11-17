@@ -16,44 +16,52 @@ import org.springframework.web.bind.annotation.RequestMapping;
 public class WebLoginController {
 
 	private WebLoginService webLoginService;
-	
+
 	@Autowired
-	public void setService(WebLoginService webLoginService){
+	public void setService(WebLoginService webLoginService) {
 		this.webLoginService = webLoginService;
 	}
-	
-	@RequestMapping(value="/doLogin")
-	public String doLogin(HttpServletRequest request, HttpSession session, Model model){
-		
+
+	@RequestMapping(value = "/doLogin")
+	public String doLogin(HttpServletRequest request, HttpSession session, Model model) {
+
 		String email = request.getParameter("email");
 		String password = request.getParameter("password");
 		String user = request.getParameter("user");
+
+		//common user
+		if (user.equals("common")) {
+			CommonUser commonUser = webLoginService.getCommonUser(email, password);
+			if (commonUser == null)
+				return "failLogin";
+			else {
+				model.addAttribute("userInfoModel", commonUser);
+				session.setAttribute("logOk", "login");
+				session.setAttribute("user", "common");
+				session.setAttribute("userName", commonUser.getName());
+			}
+		} 
 		
-		if(user.equals("common")){
-			CommonUser commonUser = webLoginService.getCommonUser(email,password);
-			if(commonUser == null)
+		//enterprise user
+		else if (user.equals("enterprise")) {
+			EnterpriseUser enterpriseUser = webLoginService.getEnterUser(email, password);
+			if (enterpriseUser == null)
 				return "failLogin";
-			model.addAttribute("loginUser", commonUser);
-			session.setAttribute("name", commonUser.getName());
-			session.setAttribute("user", user);
-		}
-		else if(user.equals("enterprise")){
-			EnterpriseUser enterUser = webLoginService.getEnterUser(email,password);
-			if(enterUser == null)
-				return "failLogin";
-			model.addAttribute("loginUser", enterUser);
-			session.setAttribute("name", enterUser.getName());
-			session.setAttribute("user", user);
-		}
-		else
+			else {
+				model.addAttribute("userInfoModel", enterpriseUser);
+				session.setAttribute("logOk", "login");
+				session.setAttribute("user", "enterprise");
+				session.setAttribute("userName", enterpriseUser.getName());
+			}
+		} else
 			return "failLogin";
-			
+
 		return "home";
 	}
-	
-	@RequestMapping(value="/logout")
-	public String doLogout(){
-		
+
+	@RequestMapping(value = "/logout")
+	public String doLogout() {
+
 		return "logout";
 	}
 }

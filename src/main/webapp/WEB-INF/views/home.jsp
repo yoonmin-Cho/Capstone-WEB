@@ -33,9 +33,9 @@
 <title>Home</title>
 </head>
 <body>
-	<!---------------------------------네비게이션 바 시작-------------------------  -->
+	<!-- navigation bar -->
 	<jsp:include page="topNavigation.jsp" flush="false"></jsp:include>
-	<!---------------------------------네비게이션 바 끝-------------------------  -->
+	
 	<style>
 		@import url(http://fonts.googleapis.com/earlyaccess/hanna.css);
 		
