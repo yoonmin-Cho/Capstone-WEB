@@ -6,6 +6,10 @@
 <meta charset="utf-8">
 </head>
 <body>
+	<!-- header bar -->
+	<jsp:include page="productHeader.jsp" flush="false"></jsp:include>
+
+	
 
 </body>
 </html>

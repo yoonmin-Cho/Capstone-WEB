@@ -25,6 +25,52 @@ public class WebProductController {
 		this.webProductService = webProductService;
 	}
 	
+	@RequestMapping(value="/product", method=RequestMethod.GET)
+	public String showProductPage(Model model, HttpSession session, HttpServletRequest request){
+		
+		//Initial category / subCategory value
+		String category = request.getParameter("category");
+		String subCategory = request.getParameter("sub");
+	
+		session.setAttribute("category", category);
+		session.setAttribute("subCategory", subCategory);
+		
+		return "product";
+	}
+	
+	@RequestMapping(value="/mostPopular")
+	public String showPopularProduct(Model model, HttpServletRequest request){
+	
+		String category = request.getParameter("category");
+		List<Product> popularProducts = webProductService.getPopularProducts(category);
+		
+		model.addAttribute("popularProduct", popularProducts);
+		
+		return "mostPopular";
+	}
+	
+	@RequestMapping(value="/mostReview")
+	public String showReviewProduct(Model model, HttpServletRequest request){
+	
+		String category = request.getParameter("category");
+		List<Product> reviewProducts = webProductService.getReviewProducts(category);
+		
+		model.addAttribute("reviewProduct", reviewProducts);
+		
+		
+		return "mostReview";
+	}
+	
+	@RequestMapping(value="/mostScan")
+	public String showScanProduct(Model model, HttpServletRequest request){
+		
+		String category = request.getParameter("category");
+		List<Product> scanProducts = webProductService.getScanProducts(category);
+		
+		model.addAttribute("scanProduct", scanProducts);
+		
+		return "mostScan";
+	}
 	/*
 	@RequestMapping(value="/search", method=RequestMethod.GET)
 	public String showSearchResult(){
@@ -32,15 +78,6 @@ public class WebProductController {
 		return 
 	}
 	*/
-	
-	@RequestMapping(value="/product")
-	public String showProductPage(Model model, HttpSession session, HttpServletRequest request){
-		//Initial category / subCategory value
-		session.setAttribute("category", "0");
-		session.setAttribute("subCategory", "0");
-	
-		return "product";
-	}
 	
 	
 }

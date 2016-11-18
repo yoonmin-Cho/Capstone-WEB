@@ -28,5 +28,16 @@ public class WebProductService {
 		return webProductDAO.getProducts(category);
 	}
 	
+	public List<Product> getPopularProducts(String category){
+		return webProductDAO.getPopularProducts(category);
+	}
+	
+	public List<Product> getReviewProducts(String category){
+		return webProductDAO.getReviewProducts(category);
+	}
+	
+	public List<Product> getScanProducts(String category){
+		return webProductDAO.getScanProducts(category);
+	}
 	
 }

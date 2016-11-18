@@ -25,16 +25,21 @@
 	crossorigin="anonymous"></script>
 </head>
 <body>
+	<%
+		String category = (String)session.getAttribute("category");
+		String sub = (String)session.getAttribute("subCategory");
+	%>
+
 	<div class="row" align="center">	
 		<div class="col-md-1"></div>
 		<div class="col-md-1"></div>
 		<div class="col-md-1"></div>
-		<div class="col-md-1"><a href="/ZEBRA/product?category=0&subCategory=0">All</a></div>
-		<div class="col-md-1"><a href="/ZEBRA/product?category=1&subCategory=0">Appliances</a></div>
-		<div class="col-md-1"><a href="/ZEBRA/product?category=2&subCategory=0">Beauty</a></div>
-		<div class="col-md-1"><a href="/ZEBRA/product?category=3&subCategory=0">Book</a></div>
-		<div class="col-md-1"><a href="/ZEBRA/product?category=4&subCategory=0">Food</a></div>
-		<div class="col-md-1"><a href="/ZEBRA/product?category=5&subCategory=0">Necessaries</a></div>
+		<div class="col-md-1"><a href="/ZEBRA/product?category=0&sub=<%=sub%>">All</a></div>
+		<div class="col-md-1"><a href="/ZEBRA/product?category=1&sub=<%=sub%>">Appliances</a></div>
+		<div class="col-md-1"><a href="/ZEBRA/product?category=2&sub=<%=sub%>">Beauty</a></div>
+		<div class="col-md-1"><a href="/ZEBRA/product?category=3&sub=<%=sub%>">Book</a></div>
+		<div class="col-md-1"><a href="/ZEBRA/product?category=4&sub=<%=sub%>">Food</a></div>
+		<div class="col-md-1"><a href="/ZEBRA/product?category=5&sub=<%=sub%>">Necessaries</a></div>
 	</div>
 </body>
 </html>
