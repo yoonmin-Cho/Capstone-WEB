@@ -159,7 +159,7 @@
 					<li class="hidden"><a class="page-scroll" href="#page-top"></a></li>
 					<li><a class="page-scroll" href="/ZEBRA/aboutService">About Services</a></li>
 					<li><a class="page-scroll" href="/ZEBRA/powerReviewer">Power Reviewer</a></li>
-					<li><a class="page-scroll" href="/ZEBRA/product">Product</a></li>
+					<li><a class="page-scroll" href="/ZEBRA/product?category=0">Product</a></li>
 					<li><a class="page-scroll" href="/ZEBRA/ourProduct?filter=All">OurProduct</a></li>
 					<li><a class="page-scroll" href="/ZEBRA/management">Management</a></li>
 				</ul>
@@ -204,7 +204,7 @@
 					<li class="hidden"><a class="page-scroll" href="#page-top"></a></li>
 					<li><a class="page-scroll" href="/ZEBRA/aboutService">About Services</a></li>
 					<li><a class="page-scroll" href="/ZEBRA/powerReviewer">Power Reviewer</a></li>
-					<li><a class="page-scroll" href="/ZEBRA/product"">Product & Purchase</a></li>
+					<li><a class="page-scroll" href="/ZEBRA/product?category=0">Product & Purchase</a></li>
 				</ul>
 
 				<ul class="nav navbar-nav navbar-right">
@@ -249,7 +249,7 @@
 					<li class="hidden"><a class="page-scroll" href="#page-top"></a></li>
 					<li><a class="page-scroll" href="/ZEBRA/aboutService">About Services</a></li>
 					<li><a class="page-scroll" href="/ZEBRA/powerReviewer">Power Reviewer</a></li>
-					<li><a class="page-scroll" href="/ZEBRA/product">Product</a></li>
+					<li><a class="page-scroll" href="/ZEBRA/product?category=0">Product</a></li>
 				</ul>
 
 				<ul class="nav navbar-nav navbar-right">
