@@ -1,6 +1,9 @@
 package kr.ac.zebra.service;
 
+import java.util.List;
+
 import kr.ac.zebra.dao.WebProductDAO;
+import kr.ac.zebra.dto.Product;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -16,8 +19,14 @@ public class WebProductService {
 	}
 	
 	//get All Products
+	public List<Product> getAllProducts(){
+		return webProductDAO.getAllProducts();
+	}
 	
+	//get Products By category value (1~5)
+	public List<Product> getProducts(String category){
+		return webProductDAO.getProducts(category);
+	}
 	
-	//get Products By category value (1~6)
 	
 }

@@ -24,17 +24,17 @@
 	integrity="sha384-0mSbJDEHialfmuBBQP6A4Qrprq5OVfW37PRR3j5ELqxss1yVqOtnepnHVP9aJ7xS"
 	crossorigin="anonymous"></script>
 </head>
-<body>	
+<body>
 	<div class="row" align="center">	
 		<div class="col-md-1"></div>
 		<div class="col-md-1"></div>
 		<div class="col-md-1"></div>
-		<div class="col-md-1"><a href="/ZEBRA/product?category?0">All</a></div>
-		<div class="col-md-1"><a href="/ZEBRA/product?category?1">Appliances</a></div>
-		<div class="col-md-1"><a href="/ZEBRA/product?category?2">Beauty</a></div>
-		<div class="col-md-1"><a href="/ZEBRA/product?category?3">Book</a></div>
-		<div class="col-md-1"><a href="/ZEBRA/product?category?4">Food</a></div>
-		<div class="col-md-1"><a href="/ZEBRA/product?category?5">Necessaries</a></div>
+		<div class="col-md-1"><a href="/ZEBRA/product?category=0&subCategory=0">All</a></div>
+		<div class="col-md-1"><a href="/ZEBRA/product?category=1&subCategory=0">Appliances</a></div>
+		<div class="col-md-1"><a href="/ZEBRA/product?category=2&subCategory=0">Beauty</a></div>
+		<div class="col-md-1"><a href="/ZEBRA/product?category=3&subCategory=0">Book</a></div>
+		<div class="col-md-1"><a href="/ZEBRA/product?category=4&subCategory=0">Food</a></div>
+		<div class="col-md-1"><a href="/ZEBRA/product?category=5&subCategory=0">Necessaries</a></div>
 	</div>
 </body>
 </html>

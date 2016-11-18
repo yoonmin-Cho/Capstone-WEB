@@ -1,5 +1,7 @@
 package kr.ac.zebra.dao;
 
+import java.util.List;
+
 import javax.sql.DataSource;
 
 import kr.ac.zebra.dto.Product;
@@ -18,6 +20,28 @@ public class WebProductDAO {
 		this.jdbcTemplateObject = new JdbcTemplate(dataSource);
 	}
 
+	public List<Product> getAllProducts(){
+		try{
+			String sqlStatement = "select * from producttb";
+			return jdbcTemplateObject.query(sqlStatement, new ProductMapper());
+		}catch(Exception e){
+			System.out.println("ProductDAO getAllProductss Exception");
+			e.printStackTrace();
+			return null;
+		}
+	}
+	
+	public List<Product> getProducts(String category){
+		try{
+			String sqlStatement = "select * from producttb where category=?";
+			return jdbcTemplateObject.query(sqlStatement, new Object[]{category} ,new ProductMapper());
+		}catch(Exception e){
+			System.out.println("ProductDAO getProducts Exception");
+			e.printStackTrace();
+			return null;
+		}
+	}
+	
 	/*
 	public Product getProduct(String barcode) {
 		try {
