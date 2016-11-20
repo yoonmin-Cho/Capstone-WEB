@@ -27,19 +27,18 @@
 <body>
 	<%
 		String category = (String)session.getAttribute("category");
-		String sub = (String)session.getAttribute("subCategory");
 	%>
 
 	<div class="row" align="center">	
 		<div class="col-md-1"></div>
 		<div class="col-md-1"></div>
 		<div class="col-md-1"></div>
-		<div class="col-md-1"><a href="/ZEBRA/product?category=0&sub=<%=sub%>">All</a></div>
-		<div class="col-md-1"><a href="/ZEBRA/product?category=1&sub=<%=sub%>">Appliances</a></div>
-		<div class="col-md-1"><a href="/ZEBRA/product?category=2&sub=<%=sub%>">Beauty</a></div>
-		<div class="col-md-1"><a href="/ZEBRA/product?category=3&sub=<%=sub%>">Book</a></div>
-		<div class="col-md-1"><a href="/ZEBRA/product?category=4&sub=<%=sub%>">Food</a></div>
-		<div class="col-md-1"><a href="/ZEBRA/product?category=5&sub=<%=sub%>">Necessaries</a></div>
+		<div class="col-md-1"><a href="/ZEBRA/mostPopular?category=0">All</a></div>
+		<div class="col-md-1"><a href="/ZEBRA/mostPopular?category=1">Appliances</a></div>
+		<div class="col-md-1"><a href="/ZEBRA/mostPopular?category=2">Beauty</a></div>
+		<div class="col-md-1"><a href="/ZEBRA/mostPopular?category=3">Book</a></div>
+		<div class="col-md-1"><a href="/ZEBRA/mostPopular?category=4">Food</a></div>
+		<div class="col-md-1"><a href="/ZEBRA/mostPopular?category=5">Necessaries</a></div>
 	</div>
 </body>
 </html>

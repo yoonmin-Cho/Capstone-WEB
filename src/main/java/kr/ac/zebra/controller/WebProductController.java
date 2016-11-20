@@ -39,33 +39,36 @@ public class WebProductController {
 	}
 	
 	@RequestMapping(value="/mostPopular")
-	public String showPopularProduct(Model model, HttpServletRequest request){
+	public String showPopularProduct(Model model, HttpServletRequest request, HttpSession session){
 	
 		String category = request.getParameter("category");
-		List<Product> popularProducts = webProductService.getPopularProducts(category);
+		session.setAttribute("category", category);
 		
+		List<Product> popularProducts = webProductService.getPopularProducts(category);
 		model.addAttribute("popularProducts", popularProducts);
 		
 		return "mostPopular";
 	}
 	
 	@RequestMapping(value="/mostReview")
-	public String showReviewProduct(Model model, HttpServletRequest request){
+	public String showReviewProduct(Model model, HttpServletRequest request, HttpSession session){
 	
 		String category = request.getParameter("category");
-		List<Product> reviewProducts = webProductService.getReviewProducts(category);
+		session.setAttribute("category", category);
 		
+		List<Product> reviewProducts = webProductService.getReviewProducts(category);
 		model.addAttribute("reviewProducts", reviewProducts);
 		
 		return "mostReview";
 	}
 	
 	@RequestMapping(value="/mostScan")
-	public String showScanProduct(Model model, HttpServletRequest request){
+	public String showScanProduct(Model model, HttpServletRequest request, HttpSession session){
 		
 		String category = request.getParameter("category");
-		List<Product> scanProducts = webProductService.getScanProducts(category);
+		session.setAttribute("category", category);
 		
+		List<Product> scanProducts = webProductService.getScanProducts(category);
 		model.addAttribute("scanProducts", scanProducts);
 		
 		return "mostScan";
