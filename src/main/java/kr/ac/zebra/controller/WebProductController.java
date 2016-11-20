@@ -34,7 +34,7 @@ public class WebProductController {
 	
 		session.setAttribute("category", category);
 		session.setAttribute("subCategory", subCategory);
-		
+	
 		return "product";
 	}
 	
@@ -44,7 +44,7 @@ public class WebProductController {
 		String category = request.getParameter("category");
 		List<Product> popularProducts = webProductService.getPopularProducts(category);
 		
-		model.addAttribute("popularProduct", popularProducts);
+		model.addAttribute("popularProducts", popularProducts);
 		
 		return "mostPopular";
 	}
@@ -55,8 +55,7 @@ public class WebProductController {
 		String category = request.getParameter("category");
 		List<Product> reviewProducts = webProductService.getReviewProducts(category);
 		
-		model.addAttribute("reviewProduct", reviewProducts);
-		
+		model.addAttribute("reviewProducts", reviewProducts);
 		
 		return "mostReview";
 	}
@@ -67,7 +66,7 @@ public class WebProductController {
 		String category = request.getParameter("category");
 		List<Product> scanProducts = webProductService.getScanProducts(category);
 		
-		model.addAttribute("scanProduct", scanProducts);
+		model.addAttribute("scanProducts", scanProducts);
 		
 		return "mostScan";
 	}
