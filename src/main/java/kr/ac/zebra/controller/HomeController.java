@@ -14,8 +14,10 @@ public class HomeController {
 	public String home(HttpSession session) {
 		
 		String isLogin = (String)session.getAttribute("logOk");
-		if(isLogin == null)
+		if(isLogin == null){
 			session.setAttribute("logOk", "notLogin");
+			session.setAttribute("user", "nonCommon");
+		}
 		return "home";
 	}
 }
