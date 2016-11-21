@@ -11,8 +11,7 @@ import org.springframework.web.bind.annotation.RequestMethod;
 public class HomeController {
 
 	@RequestMapping(value = "/", method = RequestMethod.GET)
-	public String home(HttpSession session) {
-		
+	public String home(HttpSession session) {		
 		String isLogin = (String)session.getAttribute("logOk");
 		if(isLogin == null){
 			session.setAttribute("logOk", "notLogin");
