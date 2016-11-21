@@ -205,6 +205,7 @@
 					<li><a class="page-scroll" href="/ZEBRA/aboutService">About Services</a></li>
 					<li><a class="page-scroll" href="/ZEBRA/powerReviewer">Power Reviewer</a></li>
 					<li><a class="page-scroll" href="/ZEBRA/mostPopular?category=0">Product & Purchase</a></li>
+					<li><a class="page-scroll" href="/ZEBRA/myPage">My Page</a></li>
 				</ul>
 
 				<ul class="nav navbar-nav navbar-right">

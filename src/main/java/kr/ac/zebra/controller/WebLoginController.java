@@ -36,6 +36,8 @@ public class WebLoginController {
 				return "failLogin";
 			else {
 				model.addAttribute("userInfoModel", commonUser);
+				
+				session.setAttribute("userInfo", commonUser);
 				session.setAttribute("logOk", "login");
 				session.setAttribute("user", "common");
 				session.setAttribute("userName", commonUser.getName());
