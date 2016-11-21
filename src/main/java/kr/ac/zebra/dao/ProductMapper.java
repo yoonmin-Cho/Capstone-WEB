@@ -19,7 +19,7 @@ public class ProductMapper implements RowMapper<Product>{
 		product.setProductName(rs.getString("productName"));
 		product.setProductUrl(rs.getString("productUrl"));
 		product.setScanCount(rs.getInt("scanCount"));
-		product.setStarPoint(rs.getDouble("starPoint"));
+		product.setStarPoint(rs.getInt("starPoint"));
 		product.setTotalReviewCount(rs.getInt("totalReviewCount"));
 
 		return product;

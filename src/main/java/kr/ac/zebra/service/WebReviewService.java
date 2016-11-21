@@ -22,6 +22,10 @@ public class WebReviewService {
 		return webReviewDAO.getReviews(barcode);
 	}
 	
+	public int getStarPoint(String barcode){
+		return webReviewDAO.getStarPoint(barcode);
+	}
+	
 	public List<Integer> getStarPoints(String barcode){
 		return webReviewDAO.getStarPoints(barcode);
 	}

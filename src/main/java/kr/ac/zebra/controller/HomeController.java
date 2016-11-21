@@ -19,4 +19,9 @@ public class HomeController {
 		}
 		return "home";
 	}
+	
+	@RequestMapping(value="/aboutService")
+	public String showAboutService(){
+		return "aboutService";
+	}
 }

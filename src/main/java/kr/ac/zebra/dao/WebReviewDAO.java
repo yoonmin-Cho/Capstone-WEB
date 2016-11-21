@@ -21,7 +21,7 @@ public class WebReviewDAO {
 		this.jdbcTemplateObject = new JdbcTemplate(dataSource);
 	}
 	
-	//get product Reviews 
+	//Get product Reviews 
 	public List<Review> getReviews(String barcode){
 		try{
 			String sqlStatement = "select * from reviewtb where barcode=?";
@@ -33,6 +33,19 @@ public class WebReviewDAO {
 		}
 	}
 	
+	//Get Product Star Point 
+	public int getStarPoint(String barcode){
+		try{
+			String sqlStatement = "select starPoint from producttb where barcode=?";
+			return jdbcTemplateObject.queryForObject(sqlStatement, new Object[]{barcode}, Integer.class);
+		}catch(Exception e){
+			System.out.println("WebReviewDAO - getStarPoint Exception");
+			e.printStackTrace();
+			return 0;
+		}	
+	}
+	
+	//Get Star Point List by review table 
 	public List<Integer> getStarPoints(String barcode){
 		try{
 			String sqlStatement = "select COUNT(IF(starPoint=?, starPoint, null)) from reviewtb where barcode=?";
