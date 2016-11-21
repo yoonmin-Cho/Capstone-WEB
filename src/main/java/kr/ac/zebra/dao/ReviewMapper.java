@@ -14,7 +14,7 @@ public class ReviewMapper implements RowMapper<Review>{
 		review.setEmail(rs.getString("email"));
 		review.setBarcode(rs.getString("barcode"));
 		review.setReviewText(rs.getString("reviewText"));
-		review.setStarPoint(rs.getDouble("starPoint"));
+		review.setStarPoint(rs.getInt("starPoint"));
 		review.setMemberUrl(rs.getString("memberUrl"));
 		review.setProductUrl(rs.getString("productUrl"));
 		review.setLevel(rs.getString("level"));

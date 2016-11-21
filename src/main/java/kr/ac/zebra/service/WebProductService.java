@@ -18,6 +18,10 @@ public class WebProductService {
 		this.webProductDAO = webProductDAO;
 	}
 	
+	public Product getProduct(String barcode){
+		return webProductDAO.getProduct(barcode);
+	}
+	
 	//get All Products
 	public List<Product> getAllProducts(){
 		return webProductDAO.getAllProducts();

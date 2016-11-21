@@ -13,7 +13,7 @@ public class Product {
 	private String companyName;
 	private int scanCount;
 	private int totalReviewCount;
-	private double starPoint;
+	private int starPoint;
 	
 	public Product() {
 
@@ -21,7 +21,7 @@ public class Product {
 
 	public Product(String barcode, String productName, String description,
 			String category, String productUrl, String companyName,
-			int scanCount, int totalReviewCount, double starPoint) {
+			int scanCount, int totalReviewCount, int starPoint) {
 		this.barcode = barcode;
 		this.productName = productName;
 		this.description = description;
