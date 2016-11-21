@@ -8,7 +8,7 @@ public class Review {
 	private String email;
 	private String barcode;
 	private String reviewText;
-	private double starPoint;
+	private int starPoint;
 	private String level;
 	private String memberUrl;
 	private String productUrl;
@@ -18,7 +18,7 @@ public class Review {
 	}
 
 	public Review(String email, String barcode, String reviewText,
-			double starPoint, String level, String memberUrl, String productUrl) {
+			int starPoint, String level, String memberUrl, String productUrl) {
 		this.email = email;
 		this.barcode = barcode;
 		this.reviewText = reviewText;
