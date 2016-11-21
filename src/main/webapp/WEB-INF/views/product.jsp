@@ -7,28 +7,20 @@
 <title>Product</title>
 </head>
 <body>
-	<!-- navigation bar -->
-	<jsp:include page="topNavigation.jsp" flush="false"></jsp:include>
-
-	<!-- search bar -->
-	<jsp:include page="search.jsp" flush="false"></jsp:include>
-
-	<!-- category -->
-	<jsp:include page="category.jsp" flush="false"></jsp:include>
 
 	<%
-		String logOk = (String)session.getAttribute("logOk");
-		String user = (String) session.getAttribute("user");
-		String productURL = null;
-	
-		if(logOk.equals("login") && user.equals("common"))
-			productURL = "mostPopularForUser.jsp";
-		else 
-			productURL = "mostPopular.jsp";			
+		String subCategory = (String)session.getAttribute("subCategory");
+		String pageString = null;
+		
+		if(subCategory.equals("0"))
+			pageString = "mostPopular.jsp";
+		else if(subCategory.equals("1"))
+			pageString = "mostReview.jsp";
+		else if(subCategory.equals("2"))
+			pageString = "mostScan.jsp";
 	%>
 
-	<!-- product page -->
-	<jsp:include page="<%=productURL%>" flush="false"></jsp:include>
+	<jsp:include page="<%=pageString%>" flush="false"></jsp:include>
 
 </body>
 </html>
