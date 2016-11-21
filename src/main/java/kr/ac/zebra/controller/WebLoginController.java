@@ -55,7 +55,7 @@ public class WebLoginController {
 			}
 		} else
 			return "failLogin";
-
+		
 		return "home";
 	}
 

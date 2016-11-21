@@ -60,34 +60,34 @@
 	%>
 		<div class="container">
 		<h3 align="center" style="font-family: fantasy; padding: 30px">
-			<small>Popularity</small>
+			<small>Most Review</small>
 		</h3>
 		<div class="row">
-			<c:forEach var="popularProduct" items="${popularProducts}">
+			<c:forEach var="reviewProduct" items="${reviewProducts}">
 				<div class="col-md-4 portfolio-item" style="border: 3">
 					<a href="#"> 
-						<img class="img-responsive" src="${popularProduct.productUrl}" alt=""
+						<img class="img-responsive" src="${reviewProduct.productUrl}" alt=""
 							style="width: 700px; height: 400px;">
 					</a>
 					<h1>
 						<small style="font-weight: 800">
-							<c:out value="${popularProduct.productName}"></c:out>
+							<c:out value="${reviewProduct.productName}"></c:out>
 						</small>
 						</br>	
-						<img alt="" src="/ZEBRA/resources/images/star${popularProduct.starPoint}.png" width="120px" height="30px" style="padding-top: 6px">		
+						<img alt="" src="/ZEBRA/resources/images/star${reviewProduct.starPoint}.png" width="120px" height="30px" style="padding-top: 6px">		
 					</h1>
 					<div>	
 						<div style="margin-top: 20px;">	
 							<div style="float:left;">
 								<form action="review" method="GET">
-									<button type="submit" class="review_btn" name="barcode" value="${popularProduct.barcode}">
+									<button type="submit" class="review_btn" name="barcode" value="${reviewProduct.barcode}">
 										Review
 									</button>
 								</form>
 							</div>
 							<div>
 								<form action="purchase" method="GET">
-									<button type="submit" class="purchase_btn" name="barcode" value="${popularProduct.barcode}">	
+									<button type="submit" class="purchase_btn" name="barcode" value="${reviewProduct.barcode}">	
 										Purchase
 									</button>
 								</form>
@@ -106,24 +106,24 @@
 	%>
 	<div class="container">
 		<h3 align="center" style="font-family: fantasy; padding: 30px">
-			<small>Popularity</small>
+			<small>Most Review</small>
 		</h3>
 		<div class="row">
-			<c:forEach var="popularProduct" items="${popularProducts}">
+			<c:forEach var="reviewProduct" items="${reviewProducts}">
 				<div class="col-md-4 portfolio-item" style="border: 3">
 					<a href="#"> 
-						<img class="img-responsive" src="${popularProduct.productUrl}" alt=""
+						<img class="img-responsive" src="${reviewProduct.productUrl}" alt=""
 							style="width: 700px; height: 400px;">
 					</a>
 					<h1>
 						<small style="font-weight: 800">
-							<c:out value="${popularProduct.productName}"></c:out>
+							<c:out value="${reviewProduct.productName}"></c:out>
 						</small></br> 
-						<img alt="" src="/ZEBRA/resources/images/star${popularProduct.starPoint}.png" width="120px" height="30px" style="padding-top: 6px">		
+						<img alt="" src="/ZEBRA/resources/images/star${reviewProduct.starPoint}.png" width="120px" height="30px" style="padding-top: 6px">		
 					</h1>
 					<div style="margin-top: 20px;">				
 						<form action="review" method="GET">
-							<button type="submit" class="review_btn" name="barcode" value="${popularProduct.barcode}">Review</button>
+							<button type="submit" class="review_btn" name="barcode" value="${reviewProduct.barcode}">Review</button>
 						</form>
 					</div>
 				</div>
