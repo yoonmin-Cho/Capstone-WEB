@@ -47,17 +47,15 @@
 			color: black;
 			font-size: 60px;
 		}
-		
 		#titlep {
 			font-size: 20px;
 		}
-		
 		.bootstrap-demo {
 			padding: 50px;
 		}
 	</style>
 	
 	<h1>HOME</h1>
-	
+
 </body>
 </html>
