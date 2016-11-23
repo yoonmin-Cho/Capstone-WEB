@@ -57,4 +57,36 @@ public class WebReviewController {
 		
 		return "review";
 	}
+
+	@RequestMapping(value="/reviewPurchase", method=RequestMethod.GET)
+	public String showReviewPurchasePage(Model model, HttpServletRequest request, HttpSession session){
+		
+		String barcode = request.getParameter("barcode");
+
+		//Get Product Star Point 
+		int productStarPoint = webReviewService.getStarPoint(barcode);
+		request.setAttribute("productStarPoint", productStarPoint);
+		
+		Product productInfo = webProductService.getProduct(barcode);
+		model.addAttribute("productInfo", productInfo);
+		
+		session.setAttribute("productName", productInfo.getProductName());
+		
+		//Get Review List by review table - use barcode 
+		List<Review> reviews = webReviewService.getReviews(barcode);
+		request.setAttribute("reviews", reviews);	
+		model.addAttribute("reviews", reviews);
+		
+		//Get Star point List by review table
+		List<Integer> starPoints = webReviewService.getStarPoints(barcode);
+		request.setAttribute("starPoints", starPoints);
+		
+		//side product 
+		String category = (String)session.getAttribute("category");
+		List<Product> similarProducts = webProductService.getPopularProducts(category);
+		request.setAttribute("similarProducts", similarProducts);
+		model.addAttribute("similarProducts", similarProducts);
+		
+		return "reviewPurchase";
+	}
 }

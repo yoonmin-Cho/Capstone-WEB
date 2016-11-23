@@ -38,7 +38,7 @@
 			height:35px; 
 		}
 		
-		.purchase_btn{	
+		.reviewPurchase_btn{	
 			background-Color: #65a2f7;   
 			font:15px Arial;     
 			font-weight:bold;   
@@ -79,17 +79,8 @@
 					<div>	
 						<div style="margin-top: 20px;">	
 							<div style="float:left;">
-								<form action="review" method="GET">
-									<button type="submit" class="review_btn" name="barcode" value="${popularProduct.barcode}">
-										Review
-									</button>
-								</form>
-							</div>
-							<div>
-								<form action="purchase" method="GET">
-									<button type="submit" class="purchase_btn" name="barcode" value="${popularProduct.barcode}">	
-										Purchase
-									</button>
+								<form action="reviewPurchase" method="GET">
+									<button type="submit" class="reviewPurchase_btn" name="barcode" value="${popularProduct.barcode}">show Details</button>
 								</form>
 							</div>
 						</div>	

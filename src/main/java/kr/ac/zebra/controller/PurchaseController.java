@@ -26,7 +26,7 @@ public class PurchaseController {
 		this.webProductService = webProductService;
 	}
 	
-	@RequestMapping(value="/purchase", method=RequestMethod.GET)
+	@RequestMapping(value="/datails", method=RequestMethod.GET)
 	public String showPurchasePage(HttpServletRequest request, Model model, HttpSession session){
 		
 		String barcode = request.getParameter("barcode");
@@ -38,5 +38,4 @@ public class PurchaseController {
 		
 		return "purchase";
 	}
-	
 }
