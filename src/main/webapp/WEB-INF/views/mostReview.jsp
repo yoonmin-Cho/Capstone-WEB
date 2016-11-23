@@ -1,4 +1,5 @@
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/functions" prefix="fn" %>
 <%@ taglib uri="http://www.springframework.org/tags" prefix="spring"%>
 <%@page import="java.util.*"%>
 <%@page import="kr.ac.zebra.dto.*"%>
@@ -67,27 +68,32 @@
 				<div class="col-md-4 portfolio-item" style="border: 3">
 					<a href="#"> 
 						<img class="img-responsive" src="${reviewProduct.productUrl}" alt=""
-							style="width: 700px; height: 400px;">
+							style="width: 700px; height: 400px; padding: 20px;">
 					</a>
-					<h1>
-						<small style="font-weight: 800">
-							<c:out value="${reviewProduct.productName}"></c:out>
-						</small>
-						</br>	
-						<img alt="" src="/ZEBRA/resources/images/star${reviewProduct.starPoint}.png" width="120px" height="30px" style="padding-top: 6px">		
-					</h1>
-					<div>	
-						<div style="margin-top: 20px;">	
-							<div style="float:left;">
-								<form action="reviewPurchase" method="GET">
-									<button type="submit" class="reviewPurchase_btn" name="barcode" value="${reviewProduct.barcode}">show Details</button>
-								</form>
-							</div>
-						</div>	
-					</div>
+					<c:choose>
+						<c:when test="${fn:length(reviewProduct.productName) >20 }">
+							<h1><small style="font-weight: 600">
+								<c:out value="${fn:substring(reviewProduct.productName,0,19)}"/>...
+							</small></h1>
+						</c:when>
+						<c:otherwise>
+							<h1><small style="font-weight: 600">
+								<c:out value="${reviewProduct.productName}"/>
+							</small></h1>
+						</c:otherwise>
+					</c:choose>
+					<img alt="" src="/ZEBRA/resources/images/star${reviewProduct.starPoint}.png" width="120px" height="30px" style="padding-top: 6px">		
+					
+					<div style="margin-top: 20px;">	
+						<div style="float:left;">
+							<form action="reviewPurchase" method="GET">
+								<button type="submit" class="reviewPurchase_btn" name="barcode" value="${reviewProduct.barcode}">show Details</button>
+							</form>
+						</div>
+					</div>	
 				</div>
-			</c:forEach>
-		</div>
+				</c:forEach>
+			</div>
 		<hr>
 		<hr>
 	</div>
@@ -104,14 +110,22 @@
 				<div class="col-md-4 portfolio-item" style="border: 3">
 					<a href="#"> 
 						<img class="img-responsive" src="${reviewProduct.productUrl}" alt=""
-							style="width: 700px; height: 400px;">
+							style="width: 700px; height: 400px; padding: 20px;">
 					</a>
-					<h1>
-						<small style="font-weight: 800">
-							<c:out value="${reviewProduct.productName}"></c:out>
-						</small></br> 
-						<img alt="" src="/ZEBRA/resources/images/star${reviewProduct.starPoint}.png" width="120px" height="30px" style="padding-top: 6px">		
-					</h1>
+					<c:choose>
+						<c:when test="${fn:length(reviewProduct.productName) >20 }">
+							<h1><small style="font-weight: 600">
+								<c:out value="${fn:substring(reviewProduct.productName,0,19)}"/>...
+							</small></h1>
+						</c:when>
+						<c:otherwise>
+							<h1><small style="font-weight: 600">
+								<c:out value="${reviewProduct.productName}"/>
+							</small></h1>
+						</c:otherwise>
+					</c:choose>
+					<img alt="" src="/ZEBRA/resources/images/star${reviewProduct.starPoint}.png" width="120px" height="30px" style="padding-top: 6px">		
+					
 					<div style="margin-top: 20px;">				
 						<form action="review" method="GET">
 							<button type="submit" class="review_btn" name="barcode" value="${reviewProduct.barcode}">Review</button>
