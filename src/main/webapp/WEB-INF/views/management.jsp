@@ -48,7 +48,7 @@
 	<!-- navigation bar -->
 	<jsp:include page="topNavigation.jsp" flush="false"></jsp:include>
 
-	<div style="height: 500px">
+	<div style="height: 100px">
 	
 	
 	</div>
