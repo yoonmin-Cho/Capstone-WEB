@@ -66,17 +66,41 @@ public class WebEnterpriseController {
 	
 	@RequestMapping(value="/confirm")
 	public String confirmPage(){
-		
-		
-		
+
 		return "confirm";
 	}
 	
 	@RequestMapping(value="/doConfirm")
-	public String doConfirmPage(){
-		
-		
-		
-		return "doConfirm";
-	}
+	public String doConfirmPage(HttpSession session, Model model, HttpServletRequest request){
+
+		if (request.getParameter("allow").equals("okay")){
+			Product product = new Product();
+     
+			product.setBarcode(request.getParameter("barcode"));	      
+			product.setCategory(request.getParameter("category_radio"));
+			product.setCompanyName((String)session.getAttribute("userName"));
+			product.setDescription(request.getParameter("description"));
+			product.setProductName(request.getParameter("productName"));
+			product.setProductUrl(request.getParameter("productUrl"));
+			product.setScanCount(1);
+			product.setStarPoint(0);
+			product.setTotalReviewCount(1);
+	     
+			if (webEnterpriseService.insertProduct(product)){       
+				webEnterpriseService.increasePoint(request.getParameter("email"));
+				webEnterpriseService.DeleteApplyTb(request.getParameter("barcode"));
+				//this.appGcmService.pushNotificationToGCM(1, request.getParameter("barcode"));
+			}
+			else{
+				System.out.println("product confirm rejected");
+			}
+	    }
+		else{
+			webEnterpriseService.DeleteApplyTb(request.getParameter("barcode"));
+			webEnterpriseService.decreasePoint(request.getParameter("email"));
+			System.out.println("product confirm rejected");
+			//this.appGcmService.pushNotificationToGCM(0, request.getParameter("barcode"));
+	    }
+	    return "doConfirm";
+	  }	
 }
