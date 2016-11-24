@@ -95,11 +95,11 @@
 		int productStarPoint = (int)request.getAttribute("productStarPoint");
 		String starStr = "";	
 	
-		if(productStarPoint == 5) starStr = "star5.0";
-		if(productStarPoint == 4) starStr = "star4.0";
-		if(productStarPoint == 3) starStr = "star3.0";
-		if(productStarPoint == 2) starStr = "star2.0";
-		if(productStarPoint == 1) starStr = "star1.0";
+		if(productStarPoint == 5) starStr = "star5";
+		if(productStarPoint == 4) starStr = "star4";
+		if(productStarPoint == 3) starStr = "star3";
+		if(productStarPoint == 2) starStr = "star2";
+		if(productStarPoint == 1) starStr = "star1";
 		
 		String star1,star2,star3,star4,star5 = "";
 		
@@ -155,7 +155,7 @@
 					
 					<div class="col-md-6" align="left">
 						<div class="col-md-3" align="left">
-							<img alt="" src="/ZEBRA/resources/images/star5.0.png" width="80px" height="20px" align="left">
+							<img alt="" src="/ZEBRA/resources/images/star5.png" width="80px" height="20px" align="left">
 						</div>
 						<div class="col-md-9">
 							<div class="progress">
@@ -168,7 +168,7 @@
 							</div>
 						</div>
 						<div class="col-md-3">
-							<img alt="" src="/ZEBRA/resources/images/star4.0.png" width="80px" height="20px">
+							<img alt="" src="/ZEBRA/resources/images/star4.png" width="80px" height="20px">
 						</div>
 						<div class="col-md-9">
 							<div class="progress">
@@ -181,7 +181,7 @@
 							</div>
 						</div>
 						<div class="col-md-3">
-							<img alt="" src="/ZEBRA/resources/images/star3.0.png" width="80px" height="20px">
+							<img alt="" src="/ZEBRA/resources/images/star3.png" width="80px" height="20px">
 						</div>
 						<div class="col-md-9">
 							<div class="progress">
@@ -194,7 +194,7 @@
 							</div>
 						</div>
 						<div class="col-md-3">
-							<img alt="" src="/ZEBRA/resources/images/star2.0.png" width="80px" height="20px">
+							<img alt="" src="/ZEBRA/resources/images/star2.png" width="80px" height="20px">
 						</div>
 						<div class="col-md-9">
 							<div class="progress">
@@ -207,7 +207,7 @@
 							</div>
 						</div>
 						<div class="col-md-3">
-							<img alt="" src="/ZEBRA/resources/images/star1.0.png" width="80px" height="20px">
+							<img alt="" src="/ZEBRA/resources/images/star1.png" width="80px" height="20px">
 						</div>
 						<div class="col-md-9">
 							<div class="progress">
@@ -273,27 +273,27 @@
 									int starimg = i.get(z).intValue();
 									if (starimg == 5) {
 								%>
-								<img alt="" src="/ZEBRA/resources/images/star5.0.png" width="80px"
+								<img alt="" src="/ZEBRA/resources/images/star5.png" width="80px"
 									height="20px">
 								<%
 									} if (starimg == 4) {
 								%>
-								<img alt="" src="/ZEBRA/resources/images/star4.0.png" width="80px"
+								<img alt="" src="/ZEBRA/resources/images/star4.png" width="80px"
 									height="20px">
 								<%
 									}if (starimg == 3) {
 								%>
-								<img alt="" src="/ZEBRA/resources/images/star3.0.png" width="80px"
+								<img alt="" src="/ZEBRA/resources/images/star3.png" width="80px"
 									height="20px">
 								<%
 									}if (starimg == 2) {
 								%>
-								<img alt="" src="/ZEBRA/resources/images/star2.0.png" width="80px"
+								<img alt="" src="/ZEBRA/resources/images/star2.png" width="80px"
 									height="20px">
 								<%
 									}if (starimg == 1) {
 								%>
-								<img alt="" src="/ZEBRA/resources/images/star1.0.png" width="80px"
+								<img alt="" src="/ZEBRA/resources/images/star1.png" width="80px"
 									height="20px">
 								<%
 									}
@@ -331,23 +331,23 @@
 								int starimg = similarProductStar.get(z).intValue();
 								if (starimg == 5) {
 							%>
-							<img alt="" src="/ZEBRA/resources/images/star5.0.png" width="80px" height="20px">
+							<img alt="" src="/ZEBRA/resources/images/star5.png" width="80px" height="20px">
 							<%
 								}if (starimg == 4) {
 							%>
-							<img alt="" src="/ZEBRA/resources/images/star4.0.png" width="80px" height="20px">
+							<img alt="" src="/ZEBRA/resources/images/star4.png" width="80px" height="20px">
 							<%
 								}if (starimg == 3) {
 							%>
-							<img alt="" src="/ZEBRA/resources/images/star3.0.png" width="80px" height="20px">
+							<img alt="" src="/ZEBRA/resources/images/star3.png" width="80px" height="20px">
 							<%
 								}if (starimg == 2) {
 							%>
-							<img alt="" src="/ZEBRA/resources/images/star2.0.png" width="80px" height="20px">
+							<img alt="" src="/ZEBRA/resources/images/star2.png" width="80px" height="20px">
 							<%
 								}if (starimg == 1) {
 							%>
-							<img alt="" src="/ZEBRA/resources/images/star1.0.png" width="80px" height="20px">
+							<img alt="" src="/ZEBRA/resources/images/star1.png" width="80px" height="20px">
 							<%
 								}
 								z++;
