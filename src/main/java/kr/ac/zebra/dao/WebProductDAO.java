@@ -20,6 +20,10 @@ public class WebProductDAO {
 		this.jdbcTemplateObject = new JdbcTemplate(dataSource);
 	}
 
+	/*
+	 * Access By All User
+	 */
+	
 	//Get one Product
 	public Product getProduct(String barcode){
 		try{
@@ -45,7 +49,7 @@ public class WebProductDAO {
 	}
 	
 	//Get Products by category 
-	public List<Product> getProducts(String category){
+	public List<Product> getProductsByCategory(String category){
 		try{
 			String sqlStatement = "select * from producttb where category=?";
 			return jdbcTemplateObject.query(sqlStatement, new Object[]{category} ,new ProductMapper());
@@ -102,19 +106,4 @@ public class WebProductDAO {
 		}
 	    return null;
 	}
-
-
-	
-	/*
-	public Product getProduct(String barcode) {
-		try {
-			String sqlStatement = "";
-			return jdbcTemplateObject.queryForObject(sqlStatement,
-					new Object[] { barcode }, new ProductMapper());
-		} catch (Exception e) {
-			System.out.println("getProduct Exception");
-			e.printStackTrace();
-		}
-	}
-	*/
 }

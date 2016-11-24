@@ -57,5 +57,7 @@
 	
 	<h1>HOME</h1>
 
+	<!-- footer -->
+	<jsp:include page="footer.jsp"></jsp:include>
 </body>
 </html>

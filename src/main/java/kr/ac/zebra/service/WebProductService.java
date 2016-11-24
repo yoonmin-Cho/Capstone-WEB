@@ -28,8 +28,8 @@ public class WebProductService {
 	}
 	
 	//get Products By category value (1~5)
-	public List<Product> getProducts(String category){
-		return webProductDAO.getProducts(category);
+	public List<Product> getProductsByCategory(String category){
+		return webProductDAO.getProductsByCategory(category);
 	}
 	
 	public List<Product> getPopularProducts(String category){

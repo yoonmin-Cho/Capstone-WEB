@@ -15,7 +15,7 @@
 	
 	<img src=""/>
 	
-	
-	
+	<!-- footer -->
+	<jsp:include page="footer.jsp"></jsp:include>
 </body>
 </html>
