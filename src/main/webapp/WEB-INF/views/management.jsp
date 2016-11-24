@@ -48,11 +48,12 @@
 	<!-- navigation bar -->
 	<jsp:include page="topNavigation.jsp" flush="false"></jsp:include>
 
-	<div class="container" align="center" style="padding-top: 80px">
-		<img src="/ZEBRA/resources/image/ourproduct.png"
-			style="width: 1000px; height: 300px;" >
+	<div style="height: 500px">
+	
+	
 	</div>
 
+	<!-- page content -->
 	<div class="container" style="padding-top: 10px">
 		<h2 style=" font-family: 'Anton', sans-serif; "align="left">Requested Product Table</h2>
 		<blockquote style="background: FF3300">
@@ -77,7 +78,7 @@
 							<td><c:out value="${applyList.productName}"></c:out></td>
 							<td><c:out value="${applyList.email}"></c:out></td>
 							<td><a
-								href="/ZEBRA/Confirm?barcode=${applyList.barcode}&productName=${applyList.productName}&email=${applyList.email}">Confirm</a></td>
+								href="/ZEBRA/confirm?barcode=${applyList.barcode}&productName=${applyList.productName}&email=${applyList.email}">Confirm</a></td>
 						</tr>
 						<%
 							index++;

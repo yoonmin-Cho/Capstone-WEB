@@ -5,6 +5,7 @@ import java.util.List;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
 
+import kr.ac.zebra.dto.AppApply;
 import kr.ac.zebra.dto.Product;
 import kr.ac.zebra.service.WebEnterpriseService;
 
@@ -53,11 +54,29 @@ public class WebEnterpriseController {
 	}
 	
 	@RequestMapping(value="/management")
-	public String showManagementPage(){
+	public String showManagementPage(HttpSession session, Model model){
 		
+		String companyName = (String)session.getAttribute("userName");
 		
-		
+		List<AppApply> applyList = webEnterpriseService.getApplyList(companyName);
+		model.addAttribute("applyListModel", applyList);
 		
 		return "management";
+	}
+	
+	@RequestMapping(value="/confirm")
+	public String confirmPage(){
+		
+		
+		
+		return "confirm";
+	}
+	
+	@RequestMapping(value="/doConfirm")
+	public String doConfirmPage(){
+		
+		
+		
+		return "doConfirm";
 	}
 }

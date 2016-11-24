@@ -23,15 +23,18 @@ public class WebEnterpriseProductDAO {
 
 	public int getRowCount() {
 		String sqlStatement = "select count(*) from producttb";
-		return ((Integer)jdbcTemplateObject.queryForObject(sqlStatement,Integer.class)).intValue();
+		return ((Integer) jdbcTemplateObject.queryForObject(sqlStatement,
+				Integer.class)).intValue();
 	}
 
 	public List<Product> getOurAllProducts(String companyName) {
 		try {
 			String sqlStatement = "select * from producttb  where companyName = ?";
-			return jdbcTemplateObject.query(sqlStatement, new Object[] { companyName }, new ProductMapper());
+			return jdbcTemplateObject.query(sqlStatement,
+					new Object[] { companyName }, new ProductMapper());
 		} catch (Exception e) {
-			System.out.println("WebEnterpriseProductDAO - getAllProducts Exception ");
+			System.out
+					.println("WebEnterpriseProductDAO - getAllProducts Exception ");
 			e.printStackTrace();
 		}
 		return null;
@@ -40,9 +43,11 @@ public class WebEnterpriseProductDAO {
 	public List<Product> getOurPopularityProducts(String companyName) {
 		try {
 			String sqlStatement = "select * from producttb where ( companyName = ? ) and ( starPoint >= 2 ) order by starPoint DESC";
-			return this.jdbcTemplateObject.query(sqlStatement, new Object[] { companyName }, new ProductMapper());
+			return this.jdbcTemplateObject.query(sqlStatement,
+					new Object[] { companyName }, new ProductMapper());
 		} catch (Exception e) {
-			System.out.println("WebEnterpriseProductDAO - getOurPopularityProducts Exception  ");
+			System.out
+					.println("WebEnterpriseProductDAO - getOurPopularityProducts Exception  ");
 			e.printStackTrace();
 		}
 		return null;
@@ -51,9 +56,11 @@ public class WebEnterpriseProductDAO {
 	public List<Product> getOurMostReviewProducts(String companyName) {
 		try {
 			String sqlStatement = "select * from producttb where companyName = ? and totalReviewCount > 0 order by totalReviewCount DESC";
-			return this.jdbcTemplateObject.query(sqlStatement, new Object[] { companyName }, new ProductMapper());
+			return this.jdbcTemplateObject.query(sqlStatement,
+					new Object[] { companyName }, new ProductMapper());
 		} catch (Exception e) {
-			System.out.println("WebEnterpriseProductDAO - getOurMostReviewProducts Exception");
+			System.out
+					.println("WebEnterpriseProductDAO - getOurMostReviewProducts Exception");
 			e.printStackTrace();
 		}
 		return null;
@@ -62,7 +69,8 @@ public class WebEnterpriseProductDAO {
 	public List<Product> getOurMostScanProducts(String companyName) {
 		try {
 			String sqlStatement = "select * from producttb where companyName = ? order by scanCount DESC";
-			return this.jdbcTemplateObject.query(sqlStatement,new Object[] { companyName }, new ProductMapper());
+			return this.jdbcTemplateObject.query(sqlStatement,
+					new Object[] { companyName }, new ProductMapper());
 		} catch (Exception e) {
 			System.out.println("WebEnterpriseProductDAO - getOurMostScanProducts Exception");
 			e.printStackTrace();
@@ -75,10 +83,12 @@ public class WebEnterpriseProductDAO {
 		int percentage = 0;
 
 		String sqlStatMent = "select sum(totalReviewCount) from producttb where companyName = ?";
-		count.add((Integer) this.jdbcTemplateObject.queryForObject(sqlStatMent, new Object[] { companyName }, Integer.class));
+		count.add((Integer) this.jdbcTemplateObject.queryForObject(sqlStatMent,
+				new Object[] { companyName }, Integer.class));
 
 		sqlStatMent = "select sum(scanCount) from producttb where companyName = ?";
-		count.add((Integer) this.jdbcTemplateObject.queryForObject(sqlStatMent, new Object[] { companyName }, Integer.class));
+		count.add((Integer) this.jdbcTemplateObject.queryForObject(sqlStatMent,
+				new Object[] { companyName }, Integer.class));
 
 		percentage = ((Integer) count.get(0)).intValue() * 100 / ((Integer) count.get(1)).intValue();
 		count.add(Integer.valueOf(percentage));
@@ -86,5 +96,44 @@ public class WebEnterpriseProductDAO {
 		System.out.println("company=" + count);
 
 		return count;
+	}
+
+	public boolean insert(Product product) {
+		try {
+			String barcode = product.getBarcode();
+			String productName = product.getProductName();
+			String description = product.getDescription();
+			String category = product.getCategory();
+			String productUrl = product.getProductUrl();
+			String companyName = product.getCompanyName();
+			int scanCount = product.getScanCount();
+			int totalReviewCount = product.getTotalReviewCount();
+			int starPoint = product.getStarPoint();
+
+			String sqlStatement = "insert into producttb (barcode, productName, description, category, productUrl, companyName, scanCount, totalReviewCount, starPoint) values (?,?,?,?,?,?,?,?,?)";
+			return jdbcTemplateObject.update( sqlStatement, 
+					new Object[] { barcode, productName, description, category, productUrl, companyName,
+							scanCount, totalReviewCount, starPoint }) == 1;
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+		return false;
+	}
+
+	public boolean update(Product product) {
+		String barcode = product.getBarcode();
+		String productName = product.getCompanyName();
+		String description = product.getDescription();
+		String category = product.getCategory();
+		String productUrl = product.getProductUrl();
+		String companyName = product.getCompanyName();
+		int scanCount = product.getScanCount();
+		int totalReviewCount = product.getTotalReviewCount();
+		int starPoint = product.getStarPoint();
+
+		String sqlStatement = "update producttb set barcode=?, productName=?, description=?, category=?, productUrl=?, companyName=?, scanCount=?, totalReviewCount=?, starPoint=? where barcode=?";
+		return jdbcTemplateObject.update( sqlStatement,
+				new Object[] { barcode, productName, description, category,
+						productUrl, companyName,scanCount, totalReviewCount,starPoint }) == 1;
 	}
 }
