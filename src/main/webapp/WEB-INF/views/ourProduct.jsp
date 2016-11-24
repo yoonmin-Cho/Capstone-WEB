@@ -168,20 +168,8 @@
 			onclick="tableToExcel('testTable', 'W3C Example Table')"
 			value="Export to Excel" type="button" class="btn btn-info">
 
-		<!-- Page Content -->
-		<div class="container">
-			<hr>
-			<hr>
-
-			<!-- Footer -->
-			<footer>
-				<div class="row">
-					<div class="col-lg-12">
-						<p>Copyright &copy; ZEBRA Project 2016</p>
-					</div>
-				</div>
-				<!-- /.row -->
-			</footer>
-		</div>
+		<!-- footer -->
+		<jsp:include page="footer.jsp"></jsp:include>
+		
 </body>
 </html>

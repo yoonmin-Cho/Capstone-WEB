@@ -49,7 +49,15 @@ public class WebEnterpriseController {
 			List<Product> mostScanProductList = webEnterpriseService.getOurMostScanProducts(companyName);
 			model.addAttribute("ourProductsModel", mostScanProductList);
 		}
-		
 		return "ourProduct";
+	}
+	
+	@RequestMapping(value="/management")
+	public String showManagementPage(){
+		
+		
+		
+		
+		return "management";
 	}
 }
