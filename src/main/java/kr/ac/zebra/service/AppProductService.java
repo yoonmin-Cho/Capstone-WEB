@@ -29,6 +29,10 @@ public class AppProductService {
 		return appProductDAO.getProductBySearch(keyword);
 	}
 	
+	public Product getProductByBarcode(String barcode){
+		return appProductDAO.getProductByBarcode(barcode);
+	}
+	
 	public boolean isExist(String barcode){
 		return appProductDAO.isExist(barcode);
 	}

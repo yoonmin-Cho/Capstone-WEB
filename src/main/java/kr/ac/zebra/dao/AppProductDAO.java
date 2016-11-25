@@ -21,6 +21,20 @@ public class AppProductDAO {
 		this.jdbcTemplateObject = new JdbcTemplate(dataSource);
 	}
 	
+	public Product getProductByBarcode(String barcode){
+		try{     
+			String sqlStatement = "select * from producttb where barcode=?";
+			Product product = jdbcTemplateObject.queryForObject(sqlStatement, new Object[] { barcode }, new ProductMapper());
+	      if (product.getBarcode().isEmpty()) {
+	        return null;
+	      }
+	      return product;
+	    }catch (Exception e){
+	      e.printStackTrace();
+	    }
+	    return null;
+	}
+	
 	public List<Product> getProductByCategory(String category){
 		try{	
 			String sqlStatement = "select * from producttb where category= ?";
@@ -54,4 +68,19 @@ public class AppProductDAO {
 	    return false;
 	}
 
+	public void setAvarageStarPoint(String barcode){
+	    
+		String sqlStatement = "select sum(starPoint) from reviewtb where barcode=?";
+	    int sum = ((Integer)jdbcTemplateObject.queryForObject(sqlStatement, new Object[] { barcode }, Integer.class));
+	    
+	    if (sum != 0){
+	      sqlStatement = "select count(if(barcode=?, barcode, null)) from reviewtb where barcode = ?";
+	      int count = ((Integer)jdbcTemplateObject.queryForObject(sqlStatement, new Object[] { barcode, barcode }, Integer.class));
+	      
+	      int avarage = (int)sum / count;
+	      
+	      sqlStatement = "update producttb set starpoint=? where barcode=?";
+	      this.jdbcTemplateObject.update(sqlStatement, new Object[] {avarage, barcode });
+	    }
+	  }
 }
