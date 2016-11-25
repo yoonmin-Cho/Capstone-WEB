@@ -28,6 +28,18 @@ public class CommonUserDAO {
 		}
 		return null;
 	}
+	
+	public CommonUser getUserByEmail(String email) {
+		try {
+			String sqlStatement = "select * from commonusertb where email=?";
+			return jdbcTemplateObject.queryForObject(sqlStatement,
+					new Object[] { email }, new CommonUserMapper());
+		} catch (Exception e) {
+			System.out.println("getCommonUser Exception");
+			e.printStackTrace();
+		}
+		return null;
+	}
 
 	public boolean increaseMemberPoint(String email) {
 		try {
@@ -47,5 +59,40 @@ public class CommonUserDAO {
 			e.printStackTrace();
 		}
 		return false;
+	}
+	
+	public void setting(String email, int reviewCount, int point, int totalReviewCount){
+	   
+		String sqlStatement = "update commonusertb set reviewCount = ?, point= ?, totalreviewcount= ? where email = ?";
+	    totalReviewCount++;
+	    reviewCount--;
+	    point += 10;
+	    
+	    jdbcTemplateObject.update(sqlStatement, new Object[] { reviewCount, point, totalReviewCount, email });
+	    
+	    if (totalReviewCount == 4){
+	    	sqlStatement = "update commonusertb set level = 'Silver' where email = ?";
+	    	jdbcTemplateObject.update(sqlStatement, new Object[] { email });
+	    }else if (totalReviewCount == 7){
+	    	sqlStatement = "update commonusertb set level = 'Gold' where email = ?";
+	    	jdbcTemplateObject.update(sqlStatement, new Object[] { email });
+	    }
+	}
+	
+	public void setting2(String email, int reviewCount, int point, String nowDate, int totalReviewCount){
+	   
+		String sqlStatement = "update commonusertb set reviewCount = ?, point= ?, lastreviewdate= ?, totalreviewcount= ? where email = ?";
+	    totalReviewCount++;
+	    reviewCount = 2;
+	    point += 10;
+	    
+	    jdbcTemplateObject.update(sqlStatement, new Object[] { reviewCount, point, nowDate, totalReviewCount, email });
+	    if (totalReviewCount == 4){     
+	    	sqlStatement = "update commonusertb set level = 'Silver' where email = ?";
+	    	jdbcTemplateObject.update(sqlStatement, new Object[] { email });
+	    }else if (totalReviewCount == 7){
+	    	sqlStatement = "update commonusertb set level = 'Gold' where email = ?";
+	    	this.jdbcTemplateObject.update(sqlStatement, new Object[] { email });
+	    }
 	}
 }
