@@ -68,6 +68,11 @@ public class AppProductDAO {
 	    return false;
 	}
 
+	public void scanCounting(String barcode){
+		 String sqlStatement = "update producttb set scanCount=scanCount+1 where barcode=?";
+		 jdbcTemplateObject.update(sqlStatement, new Object[] { barcode });
+	}
+	
 	public void setAvarageStarPoint(String barcode){
 	    
 		String sqlStatement = "select sum(starPoint) from reviewtb where barcode=?";

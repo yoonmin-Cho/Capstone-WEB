@@ -4,6 +4,7 @@ import java.util.List;
 
 import kr.ac.zebra.dao.AppApplyDAO;
 import kr.ac.zebra.dao.AppProductDAO;
+import kr.ac.zebra.dto.AppApply;
 import kr.ac.zebra.dto.Product;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -39,5 +40,17 @@ public class AppProductService {
 	
 	public boolean insertProduct(String email, String barcode, String productName, String companyName){
 		return appApplyDAO.insertProduct(email, barcode, productName, companyName);
+	}
+	
+	public AppApply getApply(String barcode){   
+	    AppApply apply = appApplyDAO.getApply(barcode);
+	    if (apply == null) {
+	      return null;
+	    }
+	    return apply;
+	}
+
+	public void scanCounting(String barcode){
+		appProductDAO.scanCounting(barcode);
 	}
 }
