@@ -51,8 +51,12 @@ public class AppReviewController {
 	}
 	
 	@RequestMapping(value="/appShowMyReview")
-	public String showMyReview(){
+	public String showMyReview(HttpServletRequest request){
 		
+		String email = request.getParameter("email");
+		
+		List<Review> myReviewList = appReviewService.getReviewOfUser(email);
+		request.setAttribute("reviews", myReviewList);
 		
 		return "appShowMyReview";
 	}

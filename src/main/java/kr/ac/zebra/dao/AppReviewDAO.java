@@ -39,6 +39,16 @@ public class AppReviewDAO {
 	    return null;
 	}
 	
+	public List<Review> getReviewByEmail(String email){
+		try{  
+			String sqlStatement = "select * from reviewtb where email= ?";
+			return jdbcTemplateObject.query(sqlStatement, new Object[] { email }, new ReviewMapper());
+	    }catch (Exception e){
+	    	e.printStackTrace();
+	    }
+	    return null;
+	}
+	
 	public void setReview(String email, String barcode, String reviewText, int starPoint, String memberUrl, String productUrl, String level){
 		 try{
 			 String sqlStatement = "insert into reviewtb (email, barcode, reviewText, starPoint, level, memberUrl, productUrl) values (?, ?, ?, ?, ?, ?, ?)";

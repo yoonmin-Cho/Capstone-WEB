@@ -64,4 +64,8 @@ public class AppReviewService {
 	public List<Review> getReviewByBarcode(String barcode){
 		return appReviewDAO.getReviewByBarcode(barcode);
 	}
+	
+	public List<Review> getReviewOfUser(String email){
+		return appReviewDAO.getReviewByEmail(email);
+	}
 }
