@@ -4,12 +4,12 @@ import java.util.List;
 
 import javax.servlet.http.HttpServletRequest;
 
-import kr.ac.zebra.dto.Product;
-import kr.ac.zebra.service.AppProductService;
-
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
+
+import kr.ac.zebra.dto.Product;
+import kr.ac.zebra.service.AppProductService;
 
 @Controller
 public class AppProductController {
@@ -22,23 +22,25 @@ public class AppProductController {
 	}
 	
 	@RequestMapping(value="/appCategory")
-	public String getProductByCategory(HttpServletRequest request){
+	public String showCategory(HttpServletRequest request){
 		
 		String category = request.getParameter("category");
-		List<Product> products = appProductService.getProductByCategory(category);
+		
+		List<Product> products = appProductService.getCategoryProduct(category);
 		request.setAttribute("products", products);
 		
-		return "appProductCategory";
+		return "appCategory";
 	}
 	
 	@RequestMapping(value="/appProductSearch")
 	public String showSearchProduct(HttpServletRequest request){
 		
 		String keyword = request.getParameter("keyword");
-		List<Product> products = appProductService.getProductBySearch(keyword);
+		
+		List<Product> products  = appProductService.getSearchProduct(keyword);
 		request.setAttribute("products", products);
 		
-		return "appProductSearch";
+		return "appSearchProduct";
 	}
 	
 	@RequestMapping(value="/appProductRegister")
@@ -51,14 +53,14 @@ public class AppProductController {
 		
 		if(appProductService.isExist(barcode)){
 			request.setAttribute("result", "");
-			return "appProductRegister";
+			return "appRegisterProduct";
 		}
-		if(appProductService.insertProduct(email, barcode, productName, companyName)){
+			
+		if(appProductService.insertProduct(email, barcode, productName, companyName))
 			request.setAttribute("result", "{\"1\"}");
-		} else {
+		else
 			request.setAttribute("result", "{\"0\"}");
-		}
-		
-		return "appProductRegister";
+	
+		return "appRegisterProduct";
 	}
 }
